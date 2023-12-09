@@ -1,5 +1,4 @@
 [ "$ACTION" == "add" ] || exit 0
-#[ "$ACTION" == "add" -o "$ACTION" == "update" ] || exit 0
 
 BOT_TOKEN="xxxx"
 CHAT_ID="xxxx"

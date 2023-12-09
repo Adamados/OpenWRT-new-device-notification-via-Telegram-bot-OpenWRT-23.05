@@ -1,8 +1,8 @@
 [ "$ACTION" == "add" ] || exit 0
 #[ "$ACTION" == "add" -o "$ACTION" == "update" ] || exit 0
 
-BOT_TOKEN="1049158321:AAGSeKpiKxvSy12JOQVivFxDlfnEzab26So"
-CHAT_ID="549062367"
+BOT_TOKEN="xxxx"
+CHAT_ID="xxxx"
 known_macs="/root/known_macs"
 
 if ! /bin/grep -iq "$MACADDR" "$known_macs"; then

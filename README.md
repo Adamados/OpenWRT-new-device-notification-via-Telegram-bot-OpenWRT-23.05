@@ -4,6 +4,7 @@ Credits to [https://gist.github.com/jwalanta/53f55d03fcf5265938b64ffd361502d5](h
 [https://core.telegram.org/bots/tutorial](https://core.telegram.org/bots/tutorial)
 
 # The script
+install **curl**
 Save the **90-newdev** file at **/etc/hotplug.d/dhcp** and give execute permisiion
 
 # Dump the current known devices to /etc/known_macs

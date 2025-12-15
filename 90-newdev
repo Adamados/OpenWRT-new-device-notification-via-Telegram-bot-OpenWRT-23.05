@@ -1,15 +1,18 @@
 [ "$ACTION" == "add" ] || exit 0
 
-BOT_TOKEN="xxxx"
-CHAT_ID="xxxx"
-known_macs="/root/known_macs"
+BOT_TOKEN="xxx"
+CHAT_ID="xxx"
+known_macs="/etc/config/dhcp"
+new_macs="/tmp/new_macs"
+touch "$new_macs"
+ROUTER_NAME="$(uci get system.@system[0].hostname 2>/dev/null || echo '..error hostname..')"
 
-if ! /bin/grep -iq "$MACADDR" "$known_macs"; then
-	msg="New device: 
+if ! /bin/grep -iq "$MACADDR" "$known_macs" && ! /bin/grep -q "^$MACADDR" "$new_macs"; then
+	msg="New device connected to $ROUTER_NAME
 		<b>$HOSTNAME</b> 
 		$IPADDR
-		$MACADDR"
-    echo "$MACADDR $IPADDR $HOSTNAME" >> /etc/known_macs
+		$MACADDR"    
 	curl -ks https://api.telegram.org/bot$BOT_TOKEN/sendMessage -d chat_id=$CHAT_ID -d parse_mode=HTML -d text="$msg" >/dev/null
+	echo "$(date '+%Y-%m-%d %H:%M:%S') $MACADDR $IPADDR $HOSTNAME" >> "$new_macs"
 fi
 exit 0
